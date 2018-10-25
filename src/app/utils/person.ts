@@ -6,4 +6,5 @@ export interface Persona {
     Edad: string;
     Sexo: string;
     fechaNacimiento: string;
+    check: any;
 }

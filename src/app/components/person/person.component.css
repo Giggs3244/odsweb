@@ -10,3 +10,16 @@
     width: 50%;
   }
 
+.checkBox{
+  float: left;
+}
+
+.opcion{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container{
+  margin-top: 30px;
+}

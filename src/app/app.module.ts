@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PersonComponent } from './components/person/person.component';
 
-import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, MatDatepickerModule, NativeDateAdapter, MatNativeDateModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, MatDatepickerModule, NativeDateAdapter, MatNativeDateModule, MatCheckboxModule } from '@angular/material';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, Ma
     BrowserAnimationsModule,
     MatDatepickerModule, 
     MatNativeDateModule, 
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
