@@ -1,4 +1,4 @@
-export interface Persona {
+export class Persona {
     tipoId: string;
     numeroId: string;
     Nombre: string;
@@ -6,4 +6,5 @@ export interface Persona {
     Edad: string;
     Sexo: string;
     fechaNacimiento: string;
+    check: any;
 }

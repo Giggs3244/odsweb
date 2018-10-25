@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PersonComponent } from './components/person/person.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, MatDatepickerModule, MatGridListModule, MatNativeDateModule, MatDividerModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, MatDatepickerModule, MatGridListModule, MatNativeDateModule, MatDividerModule, NativeDateAdapter, MatCheckboxModule } from '@angular/material';
 import { VotesService } from './services/votes.service';
 
 
@@ -31,10 +31,14 @@ import { VotesService } from './services/votes.service';
     MatDatepickerModule, 
     MatNativeDateModule, 
     FormsModule,
+<<<<<<< HEAD
     NgxChartsModule,
     HttpClientModule,
     MatDividerModule,
     MatGridListModule
+=======
+    MatCheckboxModule,
+>>>>>>> 00eb3c088a44b56b065a3f2e95226f7acd36fef1
   ],
   providers: [MatDatepickerModule, VotesService],
   bootstrap: [AppComponent]
