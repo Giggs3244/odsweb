@@ -31,14 +31,11 @@ import { VotesService } from './services/votes.service';
     MatDatepickerModule, 
     MatNativeDateModule, 
     FormsModule,
-<<<<<<< HEAD
     NgxChartsModule,
     HttpClientModule,
     MatDividerModule,
-    MatGridListModule
-=======
-    MatCheckboxModule,
->>>>>>> 00eb3c088a44b56b065a3f2e95226f7acd36fef1
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [MatDatepickerModule, VotesService],
   bootstrap: [AppComponent]
