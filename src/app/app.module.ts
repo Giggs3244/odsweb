@@ -28,7 +28,7 @@ import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, Ma
     MatDatepickerModule, 
     MatNativeDateModule, 
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
