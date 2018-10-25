@@ -11,7 +11,7 @@ import { Vote } from '../../utils/vote';
 export class HomeComponent implements OnInit {
 
   multi: any[];
-  view: any[] = [1000, 200];
+  view: any[] = [1300, 200];
 
   // options
   showXAxis = true;

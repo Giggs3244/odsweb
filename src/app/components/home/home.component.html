@@ -1,15 +1,28 @@
-<ngx-charts-bar-horizontal
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="single"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showDataLabel]="showDataLabel"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
+<mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-select placeholder="Nivel de Educación">
+                <mat-option value="option">Option</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-select placeholder="Sexo">
+                <mat-option value="option">Option</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-select placeholder="Edad">
+                <mat-option value="option">Option</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+</mat-grid-list>
+<ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+    [yAxis]="showYAxis" [legend]="showLegend" [showDataLabel]="showDataLabel" [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
 </ngx-charts-bar-horizontal>
