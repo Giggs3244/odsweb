@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PersonComponent } from './components/person/person.component';
 
+import { MatToolbarModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { PersonComponent } from './components/person/person.component';
   ],
   imports: [
     BrowserModule,
-    APP_ROUTER
+    APP_ROUTER,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
