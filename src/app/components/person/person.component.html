@@ -1,3 +1,42 @@
-<p>
-  person works!
-</p>
+<form class="example-form" #formPerson= "ngForm" (ngSubmit)="onSubmit(formPerson)">
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="Tipo Identificación" name ="tipoId" [(ngModel)]="persona.tipoId">
+            <mat-option *ngFor="let person of personsId" [value]="person.valueId">
+                {{person.tipoId}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Identificación</mat-label>
+        <input matInput name="numeroId" [(ngModel)]="persona.numeroId">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="nombre" [(ngModel)]="persona.Nombre">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Apellidos</mat-label>
+        <input matInput name="apellido" [(ngModel)]="persona.Apellido">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+            <mat-label>Edad</mat-label>
+        <input matInput name="edad" [(ngModel)] ="persona.Edad">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="persona.Sexo">
+                    <mat-option *ngFor="let sexo of tipoSexo" [value]="sexo.value">
+                        {{sexo.tipo}}
+                    </mat-option>
+                </mat-select>
+        </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" name="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="button-container">
+        <button mat-flat-button color="primary">Regresar</button> 
+        <button mat-flat-button color="primary" submit>Enviar</button>
+    </div>
+</form>
