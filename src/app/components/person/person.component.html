@@ -1,47 +1,75 @@
-<form class="example-form" #formPerson= "ngForm" (ngSubmit)="onSubmit(formPerson)">
-    <mat-form-field class="example-full-width">
-        <mat-select placeholder="Tipo Identificación" name ="tipoId" [(ngModel)]="persona.tipoId">
-            <mat-option *ngFor="let person of personsId" [value]="person.valueId">
-                {{person.tipoId}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Identificación</mat-label>
-        <input matInput name="numeroId" [(ngModel)]="persona.numeroId">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Nombre</mat-label>
-        <input matInput name="nombre" [(ngModel)]="persona.Nombre">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Apellidos</mat-label>
-        <input matInput name="apellido" [(ngModel)]="persona.Apellido">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-            <mat-label>Edad</mat-label>
-        <input matInput name="edad" [(ngModel)] ="persona.Edad">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="persona.Sexo">
-                    <mat-option *ngFor="let sexo of tipoSexo" [value]="sexo.value">
-                        {{sexo.tipo}}
-                    </mat-option>
-                </mat-select>
+<form class="example-form" #formPerson="ngForm" (ngSubmit)="onSubmit(formPerson)">
+    <div class="container-input">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Tipo de Identificación" name="idTipoIdentificacion" [(ngModel)]="persona.idTipoIdentificacion">
+                <mat-option *ngFor="let identificacion of tiposIdentificacion" [value]="identificacion.value">
+                    {{identificacion.text}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-    <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">
+            <mat-label>Identificación</mat-label>
+            <input matInput name="identificacion" [(ngModel)]="persona.identificacion">
+        </mat-form-field>
+    </div>
+    <div class="container-input">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombres</mat-label>
+            <input matInput name="nombres" [(ngModel)]="persona.nombres">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Apellidos</mat-label>
+            <input matInput name="apellido" [(ngModel)]="persona.Apellido">
+        </mat-form-field>
+    </div>
+    <div class="container-input">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Departamento" name="idDepartamento" [(ngModel)]="persona.idDepartamento" (change)="getCiudadesPorDepartamento($event)">
+                <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
+                    {{departamento.text}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Ciudad" name="idCiudad" [(ngModel)]="persona.idCiudad">
+                <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.value">
+                    {{ciudad.text}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="container-input">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="persona.sexo">
+                <mat-option *ngFor="let sexo of tipoSexo" [value]="sexo.value">
+                    {{sexo.tipo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Nivel de educación" name="idEducacion" [(ngModel)]="persona.idEducacion">
+                <mat-option *ngFor="let nivelEducacion of nivelesEducacion" [value]="nivelEducacion.value">
+                    {{nivelEducacion.text}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width left-space">
         <mat-label>Fecha de Nacimiento</mat-label>
         <input matInput [matDatepicker]="picker" name="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <div class="opcion" *ngFor = "let objetivo of objetivos; let i = index" >
+
+    <div class="opcion" *ngFor="let objetivo of objetivos; let i = index">
         <div class="check">
-            <mat-checkbox class="example-margin" (ngModelChange)="objetivoOpcion(i, $event)" name="objetivo" [(ngModel)]="objetivo.check">{{objetivo.titulo}}</mat-checkbox>
+            <mat-checkbox class="example-margin" (ngModelChange)="objetivoOpcion(i, $event)" name="objetivo"
+                [(ngModel)]="objetivo.check">{{objetivo.titulo}}</mat-checkbox>
         </div>
     </div>
+    
     <div class="button-container">
-        <button mat-flat-button color="primary">Regresar</button> 
         <button mat-flat-button color="primary" submit>Enviar</button>
     </div>
 </form>

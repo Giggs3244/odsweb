@@ -1,28 +1,58 @@
 <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile>
+    <mat-grid-tile rowspan="1">
         <mat-form-field>
-            <mat-select placeholder="Nivel de Educación">
-                <mat-option value="option">Option</mat-option>
+            <mat-select placeholder="Niveles de Educación" name="nivelEducacion" [(ngModel)]="nivelEducacion" (change)="getVotosObjetivosByNivelEducacion($event)">
+                <mat-option *ngFor="let nivelEducacion of nivelesEducacion" [value]="nivelEducacion.value">
+                    {{nivelEducacion.text}}
+                </mat-option>
             </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="1">
+        <mat-form-field>
+            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="sexo" (change)="getVotosObjetivosBySexo($event)">
+                <mat-option *ngFor="let sexo of tipoSexo" [value]="sexo.value">
+                    {{sexo.tipo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="1">
+        <mat-form-field>
+            <mat-select placeholder="Edad" name="edad" [(ngModel)]="edad" (change)="getVotosObjetivosByEdad($event)">
+                <mat-option *ngFor="let edad of edades" [value]="edad.value">
+                    {{edad.tipo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
 
-        </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <mat-form-field>
-            <mat-select placeholder="Sexo">
-                <mat-option value="option">Option</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <mat-form-field>
-            <mat-select placeholder="Edad">
-                <mat-option value="option">Option</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-grid-tile colspan="3" rowspan="2">
+        <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showDataLabel]="showDataLabel"
+            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+        </ngx-charts-bar-horizontal>
     </mat-grid-tile>
 </mat-grid-list>
-<ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
-    [yAxis]="showYAxis" [legend]="showLegend" [showDataLabel]="showDataLabel" [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
-</ngx-charts-bar-horizontal>
+<mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile colspan="1" rowspan="1">
+        <h3>Cantidad de votos: </h3>
+        <p>{{ cantidadVotos }}</p>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <ngx-charts-pie-chart [view]="viewPie" [scheme]="colorSchemePie" [results]="cantidadSexo" [gradient]="gradient"
+            [legend]="showLegendPie" [labels]="showDataLabelPie" [legendTitle]="legendPie" (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <ngx-charts-pie-chart [view]="viewPie" [scheme]="colorSchemePie2" [results]="cantidadNivelEducacion" [gradient]="gradient"
+            [legend]="showLegendPie" [labels]="showDataLabelPie" [legendTitle]="legendPie" (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <ngx-charts-pie-chart [view]="viewPie" [scheme]="colorSchemePie3" [results]="cantidadIDH" [gradient]="gradient"
+            [legend]="showLegendPie" [labels]="showDataLabelPie" [legendTitle]="legendPie" (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+    </mat-grid-tile>
+</mat-grid-list>

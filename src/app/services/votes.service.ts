@@ -10,4 +10,8 @@ export class VotesService {
     return this.http.get<any>('http://localhost:8080/api/votos-objetivos');
   }
 
+  getObjetivos() {
+    return this.http.get<any>('http://localhost:8080/api/objetivos');
+  }
+
 }

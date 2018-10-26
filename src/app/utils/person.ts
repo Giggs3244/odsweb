@@ -1,10 +1,12 @@
 export class Persona {
-    tipoId: string;
-    numeroId: string;
-    Nombre: string;
-    Apellido: string;
-    Edad: string;
-    Sexo: string;
+    nombres: string;
+    apellidos: string;
     fechaNacimiento: string;
+    sexo: string;
+    identificacion: string;
+    idTipoIdentificacion: number;
+    idDepartamento: number;
+    idCiudad: number;
+    idEducacion: number;
     check: any;
 }

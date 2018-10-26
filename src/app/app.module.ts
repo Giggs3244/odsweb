@@ -12,6 +12,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { MatToolbarModule, MatButtonModule, MatInputModule , MatSelectModule, MatDatepickerModule, MatGridListModule, MatNativeDateModule, MatDividerModule, NativeDateAdapter, MatCheckboxModule } from '@angular/material';
 import { VotesService } from './services/votes.service';
+import { MiscellaneousService } from './services/miscellaneous.service';
+import { DepartmentsAndCitiesService } from './services/departments.service';
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { VotesService } from './services/votes.service';
     MatGridListModule,
     MatCheckboxModule
   ],
-  providers: [MatDatepickerModule, VotesService],
+  providers: [MatDatepickerModule, VotesService, MiscellaneousService, DepartmentsAndCitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
