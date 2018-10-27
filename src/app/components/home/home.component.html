@@ -1,4 +1,6 @@
-<mat-grid-list cols="3" rowHeight="100px">
+<br>
+<h4>Filtros</h4>
+<mat-grid-list cols="3" rowHeight="70px">
     <mat-grid-tile rowspan="1">
         <mat-form-field>
             <mat-select placeholder="Niveles de Educación" name="nivelEducacion" [(ngModel)]="nivelEducacion" (change)="getVotosObjetivosByNivelEducacion($event)">
@@ -6,6 +8,7 @@
                     {{nivelEducacion.text}}
                 </mat-option>
             </mat-select>
+
         </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile rowspan="1">
@@ -26,19 +29,24 @@
             </mat-select>
         </mat-form-field>
     </mat-grid-tile>
-
-    <mat-grid-tile colspan="3" rowspan="2">
-        <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
-            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showDataLabel]="showDataLabel"
-            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
-            (select)="onSelect($event)">
-        </ngx-charts-bar-horizontal>
+</mat-grid-list>
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile colspan="1" rowspan="1">
+        <h3 class="">Total: {{ cantidadVotos }}</h3>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <h4>Sexo</h4>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <h4>Nivel de Educación</h4>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <h4>Indice de desarrollo humano</h4>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list cols="4" rowHeight="200px">
+<mat-grid-list cols="4" rowHeight="155px">
     <mat-grid-tile colspan="1" rowspan="1">
-        <h3>Cantidad de votos: </h3>
-        <p>{{ cantidadVotos }}</p>
+        <p>Quieres dar tu opinión <a routerLink="/person">Haz clic aquí</a></p>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
         <ngx-charts-pie-chart [view]="viewPie" [scheme]="colorSchemePie" [results]="cantidadSexo" [gradient]="gradient"
@@ -54,5 +62,16 @@
         <ngx-charts-pie-chart [view]="viewPie" [scheme]="colorSchemePie3" [results]="cantidadIDH" [gradient]="gradient"
             [legend]="showLegendPie" [labels]="showDataLabelPie" [legendTitle]="legendPie" (select)="onSelect($event)">
         </ngx-charts-pie-chart>
+    </mat-grid-tile>
+</mat-grid-list>
+<p></p>
+<mat-grid-list cols="3" rowHeight="300px">
+    <h4 class="no-space">Votos por objetivos</h4>
+    <mat-grid-tile colspan="3" rowspan="1">
+        <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showDataLabel]="showDataLabel"
+            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+        </ngx-charts-bar-horizontal>
     </mat-grid-tile>
 </mat-grid-list>

@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   edad: number;
   sexo: string;
   nivelEducacion: number;
-  view: any[] = [1300, 200];
-  viewPie: any[] = [700, 200];
+  view: any[] = [1360, 200];
+  viewPie: any[] = [400, 200];
   tipoSexo = [
     { value: 'MASCULINO', tipo: 'MASCULINO' },
     { value: 'FEMENINO', tipo: 'FEMENINO' },
@@ -34,12 +34,12 @@ export class HomeComponent implements OnInit {
   gradient = false;
   showLegend = false;
   showDataLabel = true;
-  showXAxisLabel = true;
+  showXAxisLabel = false;
   xAxisLabel = 'Votes';
-  showYAxisLabel = true;
+  showYAxisLabel = false;
   yAxisLabel = 'Objectives';
   showDataLabelPie = true;
-  showLegendPie = true;
+  showLegendPie = false;
 
   colorScheme = {
     domain: ['#FAC51D', '#66BD6D', '#FAA026', '#29BB9C', '#E96B56', '#55ACD2', '#B7332F', '#2C83C9', '#9166B8', '#92E7E8']

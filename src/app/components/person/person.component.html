@@ -1,74 +1,90 @@
+<br>
+<h4>Persona</h4>
 <form class="example-form" #formPerson="ngForm" (ngSubmit)="onSubmit(formPerson)">
     <div class="container-input">
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Tipo de Identificación" name="idTipoIdentificacion" [(ngModel)]="persona.idTipoIdentificacion">
+            <mat-select placeholder="Tipo de Identificación" name="idTipoIdentificacion" [(ngModel)]="persona.idTipoIdentificacion"
+                required>
                 <mat-option *ngFor="let identificacion of tiposIdentificacion" [value]="identificacion.value">
                     {{identificacion.text}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="formPerson.controls['idTipoIdentificacion'] && formPerson.controls['idTipoIdentificacion'].errors">Seleccione un tipo de identificación</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Identificación</mat-label>
-            <input matInput name="identificacion" [(ngModel)]="persona.identificacion">
+            <input matInput name="identificacion" [(ngModel)]="persona.identificacion" required>
+            <mat-error *ngIf="formPerson.controls['identificacion'] && formPerson.controls['identificacion'].errors">Diligencie el número de identificación</mat-error>
         </mat-form-field>
     </div>
     <div class="container-input">
         <mat-form-field class="example-full-width">
             <mat-label>Nombres</mat-label>
-            <input matInput name="nombres" [(ngModel)]="persona.nombres">
+            <input matInput name="nombres" [(ngModel)]="persona.nombres" required>
+            <mat-error *ngIf="formPerson.controls['nombres'] && formPerson.controls['nombres'].errors">Diligencie los nombres</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Apellidos</mat-label>
-            <input matInput name="apellido" [(ngModel)]="persona.Apellido">
+            <input matInput name="apellidos" [(ngModel)]="persona.apellidos" required>
+            <mat-error *ngIf="formPerson.controls['apellidos'] && formPerson.controls['apellidos'].errors">Diligencie los apellidos</mat-error>
         </mat-form-field>
     </div>
     <div class="container-input">
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Departamento" name="idDepartamento" [(ngModel)]="persona.idDepartamento" (change)="getCiudadesPorDepartamento($event)">
+            <mat-select placeholder="Departamento" name="idDepartamento" [(ngModel)]="persona.idDepartamento" (change)="getCiudadesPorDepartamento($event)"
+                required>
                 <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
                     {{departamento.text}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="formPerson.controls['idDepartamento'] && formPerson.controls['idDepartamento'].errors">Seleccione un departamento</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Ciudad" name="idCiudad" [(ngModel)]="persona.idCiudad">
+            <mat-select placeholder="Ciudad" name="idCiudad" [(ngModel)]="persona.idCiudad" required>
                 <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.value">
                     {{ciudad.text}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="formPerson.controls['idCiudad'] && formPerson.controls['idCiudad'].errors">Seleccione una ciudad</mat-error>
         </mat-form-field>
     </div>
     <div class="container-input">
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="persona.sexo">
+            <mat-select placeholder="Sexo" name="sexo" [(ngModel)]="persona.sexo" required>
                 <mat-option *ngFor="let sexo of tipoSexo" [value]="sexo.value">
                     {{sexo.tipo}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="formPerson.controls['sexo'] && formPerson.controls['sexo'].errors">Seleccione el sexo</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Nivel de educación" name="idEducacion" [(ngModel)]="persona.idEducacion">
+            <mat-select placeholder="Nivel de educación" name="idEducacion" [(ngModel)]="persona.idEducacion" required>
                 <mat-option *ngFor="let nivelEducacion of nivelesEducacion" [value]="nivelEducacion.value">
                     {{nivelEducacion.text}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="formPerson.controls['idEducacion'] && formPerson.controls['idEducacion'].errors">Seleccione un nivel de educación</mat-error>
         </mat-form-field>
     </div>
 
     <mat-form-field class="example-full-width left-space">
         <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" name="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento">
+        <input matInput [matDatepicker]="picker" name="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="formPerson.controls['fechaNacimiento'] && formPerson.controls['fechaNacimiento'].errors">Diligencia la fecha de nacimiento</mat-error>
     </mat-form-field>
 
+    <br>
+    <h4>¿Cuáles de estos son los objetivos más importantes para usted y su familia?</h4>
     <div class="opcion" *ngFor="let objetivo of objetivos; let i = index">
         <div class="check">
             <mat-checkbox class="example-margin" (ngModelChange)="objetivoOpcion(i, $event)" name="objetivo"
                 [(ngModel)]="objetivo.check">{{objetivo.titulo}}</mat-checkbox>
         </div>
     </div>
-    
+    <p class="message-error" *ngIf="showMsgCantidadObjetivo">{{ msgCantidadObjetivos }}</p>
+
     <div class="button-container">
         <button mat-flat-button color="primary" submit>Enviar</button>
     </div>

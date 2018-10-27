@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonId } from '../../utils/personId';
 import { Persona } from '../../utils/person';
 import { VotesService } from '../../services/votes.service';
 import { DepartmentsAndCitiesService } from '../../services/departments.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-person',
@@ -10,6 +10,8 @@ import { DepartmentsAndCitiesService } from '../../services/departments.service'
     styleUrls: ['./person.component.css']
 })
 export class PersonComponent implements OnInit {
+    showMsgCantidadObjetivo: boolean = false;
+    msgCantidadObjetivos: string = '';
     valueCheckbox: any;
     departamentos: any[] = [];
     ciudades: any[] = [];
@@ -25,7 +27,7 @@ export class PersonComponent implements OnInit {
 
     objetivos: any = [];
 
-    constructor(private _votesService: VotesService, private _departmentsAndCitiesService: DepartmentsAndCitiesService) {
+    constructor(private _votesService: VotesService, private _departmentsAndCitiesService: DepartmentsAndCitiesService, private _router:Router) {
     }
 
     ngOnInit() {
@@ -36,13 +38,31 @@ export class PersonComponent implements OnInit {
     }
 
     onSubmit(form) {
-        console.log(this.persona);
-        var infoVoto = {
-            'infoPersona': this.persona,
-            'objetivos': this.objetivosArray
+        if (form.status != "INVALID") {
+            if (this.objetivosArray.length === 0 || this.objetivosArray.length < 6) {
+                this.showMsgCantidadObjetivo = true;
+                this.msgCantidadObjetivos = 'Debe seleccionar 6 objetivos';
+            }
+            if (this.objetivosArray.length > 6) {
+                return;
+            }
+            var infoVoto = {
+                'persona': this.persona,
+                'objetivos': this.objetivosArray
+            }
+            console.log(infoVoto);
+            this._departmentsAndCitiesService.crearRegistroODS(infoVoto).subscribe(response => {
+                console.log(response);
+                this._router.navigate(['home']);
+            }, error => {
+                console.log(error);
+            });
+        } else {
+            scrollTo(0, 0);
         }
-        console.log(infoVoto);
     }
+
+    crearRegistroODS
 
     getCiudadesPorDepartamento(ev: any) {
         console.log(this.persona.idDepartamento);
@@ -67,6 +87,12 @@ export class PersonComponent implements OnInit {
                     this.objetivosArray.splice(i, 1);
                 }
             }
+        }
+        if (this.objetivosArray.length > 6) {
+            this.showMsgCantidadObjetivo = true;
+            this.msgCantidadObjetivos = 'Seleccione únicamente 6 objetivos';
+        } else {
+            this.showMsgCantidadObjetivo = false;
         }
     }
 
