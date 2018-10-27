@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   edad: number;
   sexo: string;
   nivelEducacion: number;
-  view: any[] = [1360, 200];
+  view: any[] = [1360, 300];
   viewPie: any[] = [400, 200];
   tipoSexo = [
     { value: 'MASCULINO', tipo: 'MASCULINO' },
